@@ -6,6 +6,7 @@ export default defineConfig({
     "src/advancedMath/index.ts",
     "src/numberClassification/index.ts",
     "src/linearAlgebra/index.ts",
+    "src/random/index.ts",
   ],
   format: ["esm", "cjs"],
   target: "es2022",
