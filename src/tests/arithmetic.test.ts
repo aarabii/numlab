@@ -1,42 +1,95 @@
-import { sum } from "../functions/arithmetic";
-import { SumProps } from "../types/arithmeticTypes";
+import {
+  sum,
+  subtract,
+  multiply,
+  divide,
+  modulus,
+  power,
+  sqrt as sq,
+  cubert as cube,
+  abs,
+} from "../functions/arithmetic";
 
 describe("Arithmetic functions", () => {
   describe("sum", () => {
     it("should correctly sum two numbers", () => {
-      // Arrange
-      const testData: SumProps = { a: 5, b: 3 };
+      const result = sum(1, 2);
+      expect(result).toBe(3);
+    });
+  });
 
-      // Act
-      const result = sum(testData);
+  describe("subtract", () => {
+    it("should correctly subtract two numbers", () => {
+      const result = subtract(5, 3);
+      expect(result).toBe(2);
+    });
+  });
 
-      // Assert
+  describe("multiply", () => {
+    it("should correctly multiply two numbers", () => {
+      const result = multiply(2, 3);
+      expect(result).toBe(6);
+    });
+  });
+
+  describe("divide", () => {
+    it("should correctly divide two numbers", () => {
+      const result = divide({ dividend: 6, divisor: 2 });
+      expect(result).toBe(3);
+    });
+  });
+
+  describe("divide", () => {
+    it("should throw an error if the divisor is 0", () => {
+      expect(() => divide({ dividend: 6, divisor: 0 })).toThrow();
+    });
+  });
+
+  describe("modulus", () => {
+    it("should correctly calculate the modulus of two numbers", () => {
+      const result = modulus({ dividend: 5, divisor: 2 });
+      expect(result).toBe(1);
+    });
+  });
+
+  describe("modulus", () => {
+    it("should throw an error if the divisor is 0", () => {
+      expect(() => modulus({ dividend: 6, divisor: 0 })).toThrow();
+    });
+  });
+
+  describe("power", () => {
+    it("should correctly calculate the power of two numbers", () => {
+      const result = power({ base: 2, exponent: 3 });
       expect(result).toBe(8);
     });
+  });
 
-    it("should handle negative numbers correctly", () => {
-      // Arrange
-      const testData: SumProps = { a: -5, b: -3 };
-
-      // Act
-      const result = sum(testData);
-
-      // Assert
-      expect(result).toBe(-8);
+  describe("sq", () => {
+    it("should correctly calculate the square root of a number", () => {
+      const result = sq(9);
+      expect(result).toBe(3);
     });
+  });
 
-    it("should return zero when adding zero to any number", () => {
-      // Arrange
-      const testData1: SumProps = { a: 5, b: 0 };
-      const testData2: SumProps = { a: 0, b: 5 };
+  describe("cube", () => {
+    it("should correctly calculate the cube root of a number", () => {
+      const result = cube(27);
+      expect(result).toBe(3);
+    });
+  });
 
-      // Act
-      const result1 = sum(testData1);
-      const result2 = sum(testData2);
+  describe("abs", () => {
+    it("should correctly calculate the absolute value of a number", () => {
+      const result = abs(-5);
+      expect(result).toBe(5);
+    });
+  });
 
-      // Assert
-      expect(result1).toBe(5);
-      expect(result2).toBe(5);
+  describe("abs", () => {
+    it("should correctly calculate the absolute value of a number", () => {
+      const result = abs(5);
+      expect(result).toBe(5);
     });
   });
 });
