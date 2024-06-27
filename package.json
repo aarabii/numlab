@@ -1,18 +1,42 @@
 {
   "name": "numlab",
   "description": "A comprehensive and versatile library for all your mathematical operations and computations.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
     },
-    "./dist/*": {
-      "import": "./dist/*.mjs",
-      "require": "./dist/*.js"
+    "./arithmetic": {
+      "import": "./dist/arithmetic/index.esm.js",
+      "require": "./dist/arithmetic/index.cjs.js"
+    },
+    "./advancedMath": {
+      "import": "./dist/advanceMath/index.esm.js",
+      "require": "./dist/advanceMath/index.cjs.js"
+    },
+    "./linearAlgebra": {
+      "import": "./dist/linearAlgebra/index.esm.js",
+      "require": "./dist/linearAlgebra/index.cjs.js"
+    },
+    "./logarithms": {
+      "import": "./dist/logarithms/index.esm.js",
+      "require": "./dist/logarithms/index.cjs.js"
+    },
+    "./random": {
+      "import": "./dist/random/index.esm.js",
+      "require": "./dist/random/index.cjs.js"
+    },
+    "./statistics": {
+      "import": "./dist/statistics/index.esm.js",
+      "require": "./dist/statistics/index.cjs.js"
+    },
+    "./trigonometry": {
+      "import": "./dist/trigonometry/index.esm.js",
+      "require": "./dist/trigonometry/index.cjs.js"
     }
   },
   "homepage": "https://github.com/aarabii/numlab#readme",
@@ -33,7 +57,19 @@
     "maths",
     "mathematical",
     "operations",
-    "computation"
+    "computation",
+    "arithmetic",
+    "functions",
+    "library",
+    "scientific",
+    "calculator",
+    "algorithm",
+    "numeric",
+    "formula",
+    "mathematician",
+    "calculator",
+    "mathematic",
+    "math operator"
   ],
   "author": "caya",
   "license": "MIT",

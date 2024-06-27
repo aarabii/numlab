@@ -1,13 +1,32 @@
 import { defineConfig } from "tsup";
+import { readdirSync } from "fs";
+import { join } from "path";
+
+function getDirectories(path: string): string[] {
+  return readdirSync(path, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name);
+}
+
+function getEntries(): string[] {
+  const modulesDir = join(__dirname, "src");
+  const moduleNames = getDirectories(modulesDir);
+  const entries: string[] = [];
+  moduleNames.forEach((moduleName) => {
+    const modulePath = join(modulesDir, moduleName, "index.ts");
+    entries.push(modulePath);
+  });
+  return entries;
+}
 
 export default defineConfig({
-  entry: ["src/index.ts"],
-  format: ["esm", "cjs"], // Using ESM (ES Modules)
+  entry: [...getEntries()],
+  format: ["esm", "cjs"],
   target: "es2022",
-  sourcemap: true, // Generate sourcemaps for debugging
-  dts: true, // Generate TypeScript declaration files
-  clean: true, // Clean the output directory before each build
-  outDir: "dist", // Output directory
-  minify: false, // Optional: Enable if you want to minify the output
-  splitting: false, // Optional: Disable code splitting
+  sourcemap: true,
+  dts: true,
+  clean: true,
+  outDir: "dist",
+  minify: false,
+  splitting: false,
 });

@@ -1,0 +1,16 @@
+export type factorialProps = number;
+export type fibonacciProps = number;
+export type isPrimeProps = number;
+export type isCompositeProps = number;
+export type gcdProps = [number, number];
+export type lcmProps = [number, number];
+export type primeFactorsProps = number;
+export type binomialProps = [number, number];
+export type hermiteProps = [number, number];
+export type laguerreProps = { n: number; x: number };
+export type legendreProps = [number, number];
+export type chebyshevProps = [number, number];
+export type besselProps = [number, number];
+export type gammaProps = number;
+export type betaProps = [number, number];
+export type zetaProps = number;
