@@ -1,4 +1,4 @@
-import * as numTypes from "../types/arithmeticTypes";
+import * as numTypes from "../types/arithmetic.types";
 
 export function sum(...numbers: numTypes.SumProps): number {
   return numbers.reduce((acc, num) => acc + num, 0);

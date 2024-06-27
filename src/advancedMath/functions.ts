@@ -1,4 +1,4 @@
-import * as numTypes from "../types/advancedMathTypes";
+import * as numTypes from "../types/advancedMath.types";
 
 export function factorial(num: numTypes.factorialProps): number {
   if (num === 0) return 1;
