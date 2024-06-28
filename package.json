@@ -1,42 +1,50 @@
 {
   "name": "numlab",
   "description": "A comprehensive and versatile library for all your mathematical operations and computations.",
-  "version": "0.1.6",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "version": "0.1.7",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/index.d.ts"
     },
     "./arithmetic": {
-      "import": "./dist/arithmetic/index.esm.js",
-      "require": "./dist/arithmetic/index.cjs.js"
+      "import": "./dist/arithmetic.esm.js",
+      "require": "./dist/arithmetic.cjs.js",
+      "types": "./dist/arithmetic.d.ts"
     },
     "./advancedMath": {
-      "import": "./dist/advanceMath/index.esm.js",
-      "require": "./dist/advanceMath/index.cjs.js"
+      "import": "./dist/advancedMath.esm.js",
+      "require": "./dist/advancedMath.cjs.js",
+      "types": "./dist/advancedMath.d.ts"
     },
     "./linearAlgebra": {
-      "import": "./dist/linearAlgebra/index.esm.js",
-      "require": "./dist/linearAlgebra/index.cjs.js"
+      "import": "./dist/linearAlgebra.esm.js",
+      "require": "./dist/linearAlgebra.cjs.js",
+      "types": "./dist/linearAlgebra.d.ts"
     },
     "./logarithms": {
-      "import": "./dist/logarithms/index.esm.js",
-      "require": "./dist/logarithms/index.cjs.js"
+      "import": "./dist/logarithms.esm.js",
+      "require": "./dist/logarithms.cjs.js",
+      "types": "./dist/logarithms.d.ts"
     },
     "./random": {
-      "import": "./dist/random/index.esm.js",
-      "require": "./dist/random/index.cjs.js"
+      "import": "./dist/random.esm.js",
+      "require": "./dist/random.cjs.js",
+      "types": "./dist/random.d.ts"
     },
     "./statistics": {
-      "import": "./dist/statistics/index.esm.js",
-      "require": "./dist/statistics/index.cjs.js"
+      "import": "./dist/statistics.esm.js",
+      "require": "./dist/statistics.cjs.js",
+      "types": "./dist/statistics.d.ts"
     },
     "./trigonometry": {
-      "import": "./dist/trigonometry/index.esm.js",
-      "require": "./dist/trigonometry/index.cjs.js"
+      "import": "./dist/trigonometry.esm.js",
+      "require": "./dist/trigonometry.cjs.js",
+      "types": "./dist/trigonometry.d.ts"
     }
   },
   "homepage": "https://github.com/aarabii/numlab#readme",

@@ -1,4 +1,4 @@
-import * as numTypes from "../../types/linearAlgebra.types";
+import * as numTypes from "../types/linearAlgebra.types";
 
 function checkMismatch({
   vector1,

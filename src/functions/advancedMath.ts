@@ -1,4 +1,4 @@
-import * as numTypes from "../../types/advancedMath.types";
+import * as numTypes from "../types/advancedMath.types";
 
 export function factorial({ n }: numTypes.FactorialProps): number {
   if (n === 0) return 1;

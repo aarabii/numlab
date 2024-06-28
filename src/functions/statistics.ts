@@ -1,4 +1,4 @@
-import * as numTypes from "../../types/statistics.types";
+import * as numTypes from "../types/statistics.types";
 
 export function mean({ data }: numTypes.MeanProps): number {
   return data.reduce((a, b) => a + b) / data.length;
