@@ -1,11 +1,14 @@
-export type log = { x: number; base: number };
-export type ln = { x: number };
-export type log2 = { x: number };
-export type log10 = { x: number };
-export type log1p = { x: number };
-export type log2p = { x: number };
-export type log10p = { x: number };
-export type antilog = { x: number; base: number };
-export type antiln = { x: number };
-export type antilog2 = { x: number };
-export type antilog10 = { x: number };
+export type SingleNumberWithBaseProps = { x: number; base: number };
+export type SingleNumberProps = { x: number };
+
+export type LogProps = SingleNumberWithBaseProps;
+export type LnProps = SingleNumberProps;
+export type Log2Props = SingleNumberProps;
+export type Log10Props = SingleNumberProps;
+export type Log1pProps = SingleNumberProps;
+export type Log2pProps = SingleNumberProps;
+export type Log10pProps = SingleNumberProps;
+export type AntilogProps = SingleNumberWithBaseProps;
+export type AntilnProps = SingleNumberProps;
+export type Antilog2Props = SingleNumberProps;
+export type Antilog10Props = SingleNumberProps;
