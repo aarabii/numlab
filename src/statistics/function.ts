@@ -1,16 +1,16 @@
 import * as numTypes from "../types/statistics.types";
 
-export function mean({ data }: numTypes.mean): number {
+export function mean({ data }: numTypes.MeanProps): number {
   return data.reduce((a, b) => a + b) / data.length;
 }
 
-export function median({ data }: numTypes.median): number {
+export function median({ data }: numTypes.MedianProps): number {
   data.sort((a, b) => a - b);
   const mid = Math.floor(data.length / 2);
   return data.length % 2 !== 0 ? data[mid] : (data[mid - 1] + data[mid]) / 2;
 }
 
-export function mode({ data }: numTypes.mode): number {
+export function mode({ data }: numTypes.ModeProps): number {
   const modeMap: { [key: number]: number } = {};
   data.forEach((num) => {
     modeMap[num] = (modeMap[num] || 0) + 1;
@@ -28,11 +28,11 @@ export function mode({ data }: numTypes.mode): number {
   return modes.length === Object.keys(modeMap).length ? -1 : modes[0];
 }
 
-export function range({ data }: numTypes.range): number {
+export function range({ data }: numTypes.RangeProps): number {
   return Math.max(...data) - Math.min(...data);
 }
 
-export function variance({ data }: numTypes.variance): number {
+export function variance({ data }: numTypes.VarianceProps): number {
   const meanVal = mean({ data });
   return (
     data.reduce((acc, val) => acc + Math.pow(val - meanVal, 2), 0) / data.length
@@ -41,7 +41,7 @@ export function variance({ data }: numTypes.variance): number {
 
 export function standardDeviation({
   data,
-}: numTypes.standardDeviation): number {
+}: numTypes.StandardDeviationProps): number {
   return Math.sqrt(variance({ data }));
 }
 
@@ -49,14 +49,14 @@ export function zScore({ data, x }: { data: number[]; x: number }): number {
   return (x - mean({ data })) / standardDeviation({ data });
 }
 
-export function meanDeviation({ data }: numTypes.meanDeviation): number {
+export function meanDeviation({ data }: numTypes.MeanDeviationProps): number {
   const meanVal = mean({ data });
   return (
     data.reduce((acc, val) => acc + Math.abs(val - meanVal), 0) / data.length
   );
 }
 
-export function skewness({ data }: numTypes.skewness): number {
+export function skewness({ data }: numTypes.SkewnessProps): number {
   const meanVal = mean({ data });
   const sd = standardDeviation({ data });
   return (
@@ -66,7 +66,7 @@ export function skewness({ data }: numTypes.skewness): number {
   );
 }
 
-export function kurtosis({ data }: numTypes.kurtosis): number {
+export function kurtosis({ data }: numTypes.KurtosisProps): number {
   const meanVal = mean({ data });
   const sd = standardDeviation({ data });
   return (
@@ -76,7 +76,10 @@ export function kurtosis({ data }: numTypes.kurtosis): number {
   );
 }
 
-export function percentiles({ data, percent }: numTypes.percentiles): number {
+export function percentiles({
+  data,
+  percent,
+}: numTypes.PercentileProps): number {
   data.sort((a, b) => a - b);
   const index = (percent / 100) * data.length;
   return index % 1 === 0
@@ -84,7 +87,7 @@ export function percentiles({ data, percent }: numTypes.percentiles): number {
     : data[Math.floor(index)];
 }
 
-export function quartiles({ data }: numTypes.quartiles): number[] {
+export function quartiles({ data }: numTypes.QuartilesProps): number[] {
   data.sort((a, b) => a - b);
   const mid = Math.floor(data.length / 2);
   const Q1 = data[Math.floor(mid / 2)];
@@ -96,12 +99,12 @@ export function quartiles({ data }: numTypes.quartiles): number[] {
 
 export function interquartileRange({
   data,
-}: numTypes.interquartileRange): number {
+}: numTypes.InterquartileRangeProps): number {
   const [Q1, , Q3] = quartiles({ data });
   return Q3 - Q1;
 }
 
-export function outliers({ data }: numTypes.outliers): number[] {
+export function outliers({ data }: numTypes.OutliersProps): number[] {
   const [Q1, , Q3] = quartiles({ data });
   const IQR = Q3 - Q1;
   const lowerBound = Q1 - 1.5 * IQR;
@@ -109,7 +112,10 @@ export function outliers({ data }: numTypes.outliers): number[] {
   return data.filter((val) => val < lowerBound || val > upperBound);
 }
 
-export function correlation({ data1, data2 }: numTypes.correlation): number {
+export function correlation({
+  data1,
+  data2,
+}: numTypes.CorrelationProps): number {
   const mean1 = mean({ data: data1 });
   const mean2 = mean({ data: data2 });
   const sd1 = standardDeviation({ data: data1 });
@@ -120,7 +126,7 @@ export function correlation({ data1, data2 }: numTypes.correlation): number {
   );
 }
 
-export function covariance({ data1, data2 }: numTypes.covariance): number {
+export function covariance({ data1, data2 }: numTypes.CovarianceProps): number {
   const mean1 = mean({ data: data1 });
   const mean2 = mean({ data: data2 });
   return (
@@ -129,7 +135,7 @@ export function covariance({ data1, data2 }: numTypes.covariance): number {
   );
 }
 
-export function regression({ data1, data2 }: numTypes.regression): {
+export function regression({ data1, data2 }: numTypes.RegressionProps): {
   m: number;
   b: number;
 } {
@@ -143,7 +149,7 @@ export function regression({ data1, data2 }: numTypes.regression): {
 
 export function exponentialRegression({
   data,
-}: numTypes.exponentialRegression): {
+}: numTypes.ExponentialRegressionProps): {
   a: number;
   b: number;
 } {
@@ -157,7 +163,7 @@ export function exponentialRegression({
 
 export function logarithmicRegression({
   data,
-}: numTypes.logarithmicRegression): {
+}: numTypes.LogarithmicRegressionProps): {
   a: number;
   b: number;
 } {
@@ -169,7 +175,7 @@ export function logarithmicRegression({
   return { a: Math.exp(b), b: m };
 }
 
-export function powerRegression({ data }: numTypes.powerRegression): {
+export function powerRegression({ data }: numTypes.PowerRegressionProps): {
   a: number;
   b: number;
 } {
@@ -183,7 +189,7 @@ export function powerRegression({ data }: numTypes.powerRegression): {
 
 export function polynomialRegression({
   data,
-}: numTypes.polynomialRegression): number[] {
+}: numTypes.PolynomialRegressionProps): number[] {
   const data2 = data.map((val, i) => [i, val]);
   const n = data2.length;
   const x = data2.map((val) => val[0]);
@@ -201,14 +207,16 @@ export function polynomialRegression({
   return solve(matrix, sum.slice(1));
 }
 
-export function linearRegression({ data }: numTypes.linearRegression): {
+export function linearRegression({ data }: numTypes.LinearRegressionProps): {
   m: number;
   b: number;
 } {
   return regression({ data1: data.map((val, i) => i), data2: data });
 }
 
-export function quadraticRegression({ data }: numTypes.quadraticRegression): {
+export function quadraticRegression({
+  data,
+}: numTypes.QuadraticRegressionProps): {
   a: number;
   b: number;
   c: number;
