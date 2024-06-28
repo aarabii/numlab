@@ -1,68 +1,65 @@
 import * as numTypes from "../types/advancedMath.types";
 
-export function factorial(num: numTypes.factorialProps): number {
-  if (num === 0) return 1;
-  return num * factorial(num - 1);
+export function factorial({ n }: numTypes.FactorialFunction): number {
+  if (n === 0) return 1;
+  return n * factorial({ n: n - 1 });
 }
 
-export function fibonacci(num: numTypes.fibonacciProps): number {
-  if (num <= 1) return num;
-  return fibonacci(num - 1) + fibonacci(num - 2);
+export function fibonacci({ n }: numTypes.FibonacciFunction): number {
+  if (n <= 1) return n;
+  return fibonacci({ n: n - 1 }) + fibonacci({ n: n - 2 });
 }
 
-export function isPrime(num: numTypes.isPrimeProps): boolean {
-  if (num <= 1) return false;
-  if (num <= 3) return true;
-  if (num % 2 === 0 || num % 3 === 0) return false;
+export function isPrime({ n }: numTypes.IsPrimeFunction): boolean {
+  if (n <= 1) return false;
+  if (n <= 3) return true;
+  if (n % 2 === 0 || n % 3 === 0) return false;
   let i = 5;
-  while (i * i <= num) {
-    if (num % i === 0 || num % (i + 2) === 0) return false;
+  while (i * i <= n) {
+    if (n % i === 0 || n % (i + 2) === 0) return false;
     i += 6;
   }
   return true;
 }
 
-export function isComposite(num: numTypes.isCompositeProps): boolean {
-  return !isPrime(num);
+export function isComposite({ n }: numTypes.IsCompositeFunction): boolean {
+  return !isPrime({ n });
 }
 
-export function gcd(nums: numTypes.gcdProps): number {
-  const [a, b] = nums;
-  return b === 0 ? a : gcd([b, a % b]);
+export function gcd({ a, b }: numTypes.GcdFunction): number {
+  return b === 0 ? a : gcd({ a: b, b: a % b });
 }
 
-export function lcm(nums: numTypes.lcmProps): number {
-  const [a, b] = nums;
-  return Math.abs(a * b) / gcd([a, b]);
+export function lcm({ a, b }: numTypes.LcmFunction): number {
+  return Math.abs(a * b) / gcd({ a, b });
 }
 
-export function primeFactors(num: numTypes.primeFactorsProps): number[] {
+export function primeFactors({ n }: numTypes.PrimeFactorsFunction): number[] {
   const factors = [];
-  let n = num;
-  for (let i = 2; i <= n; i++) {
-    while (n % i === 0) {
+  let num = n;
+  for (let i = 2; i <= num; i++) {
+    while (num % i === 0) {
       factors.push(i);
-      n /= i;
+      num /= i;
     }
   }
   return factors;
 }
 
-export function binomial(nums: numTypes.binomialProps): number {
-  const [n, k] = nums;
+export function binomial({ n, k }: numTypes.BinomialFunction): number {
   if (k === 0 || k === n) return 1;
-  return binomial([n - 1, k - 1]) + binomial([n - 1, k]);
+  return binomial({ n: n - 1, k: k - 1 }) + binomial({ n: n - 1, k });
 }
 
-export function hermite(nums: numTypes.hermiteProps): number {
-  const [n, x] = nums;
+export function hermite({ n, x }: numTypes.HermiteFunction): number {
   if (n === 0) return 1;
   if (n === 1) return 2 * x;
-  return 2 * x * hermite([n - 1, x]) - 2 * (n - 1) * hermite([n - 2, x]);
+  return (
+    2 * x * hermite({ n: n - 1, x }) - 2 * (n - 1) * hermite({ n: n - 2, x })
+  );
 }
 
-export function laguerre(nums: numTypes.laguerreProps): number {
-  const { n, x } = nums;
+export function laguerre({ n, x }: numTypes.LaguerreFunction): number {
   if (n === 0) return 1;
   if (n === 1) return 1 - x;
   return (
@@ -71,46 +68,43 @@ export function laguerre(nums: numTypes.laguerreProps): number {
   );
 }
 
-export function legendre(nums: numTypes.legendreProps): number {
-  const [n, x] = nums;
+export function legendre({ n, x }: numTypes.LegendreFunction): number {
   if (n === 0) return 1;
   if (n === 1) return x;
   return (
-    (2 * n - 1) * x * legendre([n - 1, x]) - (n - 1) * legendre([n - 2, x])
+    (2 * n - 1) * x * legendre({ n: n - 1, x }) -
+    (n - 1) * legendre({ n: n - 2, x })
   );
 }
 
-export function chebyshev(nums: numTypes.chebyshevProps): number {
-  const [n, x] = nums;
+export function chebyshev({ n, x }: numTypes.ChebyshevFunction): number {
   if (n === 0) return 1;
   if (n === 1) return x;
-  return 2 * x * chebyshev([n - 1, x]) - chebyshev([n - 2, x]);
+  return 2 * x * chebyshev({ n: n - 1, x }) - chebyshev({ n: n - 2, x });
 }
 
-export function bessel(nums: numTypes.besselProps): number {
-  const [n, x] = nums;
-  if (n === 0) return bessel([0, x]);
-  if (n === 1) return bessel([0, x]);
-  return ((2 * n - 1) / x) * bessel([n - 1, x]) - bessel([n - 2, x]);
+export function bessel({ n, x }: numTypes.BesselFunction): number {
+  if (n === 0) return bessel({ n: 0, x });
+  if (n === 1) return bessel({ n: 0, x });
+  return ((2 * n - 1) / x) * bessel({ n: n - 1, x }) - bessel({ n: n - 2, x });
 }
 
-export function gamma(num: numTypes.gammaProps): number {
-  if (num === 0) {
+export function gamma({ n }: numTypes.GammaFunction): number {
+  if (n === 0) {
     throw new Error("Gamma function is undefined for zero.");
   }
-  if (num === 1) return 1;
-  return (num - 1) * gamma(num - 1);
+  if (n === 1) return 1;
+  return (n - 1) * gamma({ n: n - 1 });
 }
 
-export function beta(nums: numTypes.betaProps): number {
-  const [a, b] = nums;
-  return (gamma(a) * gamma(b)) / gamma(a + b);
+export function beta({ x, y }: numTypes.BetaFunction): number {
+  return (gamma({ n: x }) * gamma({ n: y })) / gamma({ n: x + y });
 }
 
-export function zeta(num: numTypes.zetaProps): number {
+export function zeta({ n }: numTypes.ZetaFunction): number {
   let sum = 0;
   for (let i = 1; i < 10000; i++) {
-    sum += 1 / i ** num;
+    sum += 1 / i ** n;
   }
   return sum;
 }
