@@ -5,6 +5,7 @@ export * as logarithms from "./logarithms";
 export * as numberClassifications from "./numberClassification";
 export * as random from "./random";
 export * as statistics from "./statistics";
+export * as trigonometry from "./trigonometry";
 
 // types
 export * as advanceMathTypes from "./types/advancedMath.types";
@@ -14,3 +15,4 @@ export * as logarithmsTypes from "./types/logarithms.types";
 export * as numberClassificationTypes from "./types/numberClassification.types";
 export * as randomTypes from "./types/random.types";
 export * as statisticsTypes from "./types/statistics.types";
+export * as trigonometryTypes from "./types/trigonometry.types";

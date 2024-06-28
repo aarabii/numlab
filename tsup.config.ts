@@ -10,6 +10,7 @@ export default defineConfig({
     "src/numberClassification/index.ts",
     "src/random/index.ts",
     "src/statistics/index.ts",
+    "src/trigonometry/index.ts",
   ],
   format: ["esm", "cjs"],
   target: "es2022",
