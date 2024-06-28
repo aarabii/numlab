@@ -1,26 +1,14 @@
-export type SumProps = number[];
+export type NumberArrayProps = { numbers: number[] };
+export type TwoNumberProps = { dividend: number; divisor: number };
+export type BaseExponentProps = { base: number; exponent: number };
+export type SingleNumberProps = { x: number };
 
-export type SubtractProps = number[];
-
-export type MultiplyProps = number[];
-
-export type DivideProps = {
-  dividend: number;
-  divisor: number;
-};
-
-export type ModulusProps = {
-  dividend: number;
-  divisor: number;
-};
-
-export type PowerProps = {
-  base: number;
-  exponent: number;
-};
-
-export type SqrtProps = number;
-
-export type CbrtProps = number;
-
-export type AbsProps = number;
+export type SumProps = NumberArrayProps;
+export type SubtractProps = NumberArrayProps;
+export type MultiplyProps = NumberArrayProps;
+export type DivideProps = TwoNumberProps;
+export type ModulusProps = TwoNumberProps;
+export type PowerProps = BaseExponentProps;
+export type SqrtProps = SingleNumberProps;
+export type CbrtProps = SingleNumberProps;
+export type AbsProps = SingleNumberProps;
