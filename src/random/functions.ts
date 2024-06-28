@@ -2,7 +2,7 @@ import * as numTypes from "../types/random.types";
 
 export function random({
   type = "Int",
-}: numTypes.randomProps): number | string {
+}: numTypes.RandomProps): number | string {
   switch (type) {
     case "Int":
       return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
@@ -20,14 +20,14 @@ export function random({
 export function randomInRange({
   min = 0,
   max,
-}: numTypes.randomInRangeProps): number {
+}: numTypes.RandomInRangeProps): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export function randomNormal({
   mean,
   stdDev,
-}: numTypes.randomNormalProps): number {
+}: numTypes.RandomNormalProps): number {
   let u = 0,
     v = 0;
   while (u === 0) u = Math.random();
@@ -37,7 +37,7 @@ export function randomNormal({
   );
 }
 
-export function shuffle({ array }: numTypes.shuffleProps): any[] {
+export function shuffle({ array }: numTypes.ShuffleProps): any[] {
   let currentIndex = array.length,
     randomIndex;
   while (currentIndex !== 0) {
@@ -51,11 +51,11 @@ export function shuffle({ array }: numTypes.shuffleProps): any[] {
   return array;
 }
 
-export function sample({ array, size }: numTypes.sampleProps): any[] {
+export function sample({ array, size }: numTypes.SampleProps): any[] {
   return shuffle({ array }).slice(0, size);
 }
 
-export function randomSeed({ seed }: numTypes.randomSeedProps): void {
+export function randomSeed({ seed }: numTypes.RandomSeedProps): void {
   Math.random = function () {
     let x = Math.sin(seed++) * 10000;
     return x - Math.floor(x);

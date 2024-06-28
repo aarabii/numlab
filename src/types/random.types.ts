@@ -1,26 +1,8 @@
-export type randomProps = {
-  type?: string;
-};
+export type RandomProps = { type?: string };
+export type RandomInRangeProps = { min?: number; max: number };
+export type RandomNormalProps = { mean: number; stdDev: number };
+export type ArrayProps = { array: any[] };
+export type SampleProps = { array: any[]; size: number };
+export type RandomSeedProps = { seed: number };
 
-export type randomInRangeProps = {
-  min?: number;
-  max: number;
-};
-
-export type randomNormalProps = {
-  mean: number;
-  stdDev: number;
-};
-
-export type shuffleProps = {
-  array: any[];
-};
-
-export type sampleProps = {
-  array: any[];
-  size: number;
-};
-
-export type randomSeedProps = {
-  seed: number;
-};
+export type ShuffleProps = ArrayProps;
