@@ -1,7 +1,10 @@
 import * as numTypes from "../types/linearAlgebra.types";
 
-function checkMismatch({ vm1, vm2 }: numTypes.checkMismatchProps) {
-  if (vm1.length !== vm2.length) {
+function checkMismatch({
+  vector1,
+  vector2,
+}: numTypes.CheckMismatchProps): void {
+  if (vector1.length !== vector2.length) {
     throw new Error("Vectors/Matrices must be the same length");
   }
 }
@@ -10,7 +13,7 @@ export function dotProduct({
   vector1,
   vector2,
 }: numTypes.DotProductProps): number {
-  checkMismatch({ vm1: vector1, vm2: vector2 });
+  checkMismatch({ vector1: vector1, vector2: vector2 });
   return vector1.reduce((acc, curr, idx) => acc + curr * vector2[idx], 0);
 }
 
@@ -18,7 +21,7 @@ export function crossProduct({
   vector1,
   vector2,
 }: numTypes.CrossProductProps): number[] {
-  checkMismatch({ vm1: vector1, vm2: vector2 });
+  checkMismatch({ vector1: vector1, vector2: vector2 });
   return [
     vector1[1] * vector2[2] - vector1[2] * vector2[1],
     vector1[2] * vector2[0] - vector1[0] * vector2[2],
@@ -87,6 +90,7 @@ export function eigenvalues({ matrix }: numTypes.EigenvaluesProps): number[] {
     throw new Error("Matrix must be square");
   }
 
+  // Eigenvalues calculation is complex and requires specialized algorithms
   return [];
 }
 
@@ -97,8 +101,10 @@ export function eigenvectors({
     throw new Error("Matrix must be square");
   }
 
+  // Eigenvectors calculation is complex and requires specialized algorithms
   return [];
 }
+
 export function trace({ matrix }: numTypes.TraceProps): number {
   if (matrix.length !== matrix[0].length) {
     throw new Error("Matrix must be square");
@@ -106,7 +112,7 @@ export function trace({ matrix }: numTypes.TraceProps): number {
   return matrix.reduce((acc, row, i) => acc + row[i], 0);
 }
 
-function rank(matrix: number[][]): number {
+export function rank({ matrix }: numTypes.RankProps): number {
   let m = matrix.length;
   let n = matrix[0].length;
 
@@ -136,11 +142,11 @@ function rank(matrix: number[][]): number {
   return rank;
 }
 
-function matrixNullity(matrix: number[][]): number {
+export function nullity({ matrix }: numTypes.NullityProps): number {
   let m = matrix.length;
   let n = matrix[0].length;
 
-  let rank_val = rank(matrix);
+  let rank_val = rank({ matrix });
 
   return n - rank_val;
 }

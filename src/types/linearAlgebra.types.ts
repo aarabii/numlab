@@ -1,59 +1,20 @@
-export type checkMismatchProps = {
-  vm1: number[];
-  vm2: number[];
-};
+export type VectorProps = { vector1: number[]; vector2: number[] };
+export type MatrixProps = { matrix: number[][] };
 
-export type DotProductProps = {
-  vector1: number[];
-  vector2: number[];
-};
-
-export type CrossProductProps = {
-  vector1: number[];
-  vector2: number[];
-};
-
+export type CheckMismatchProps = VectorProps;
+export type DotProductProps = VectorProps;
+export type CrossProductProps = VectorProps;
 export type MatrixMultiplicationProps = {
   matrix1: number[][];
   matrix2: number[][];
 };
-
-export type TransposeProps = {
-  matrix: number[][];
-};
-
-export type DeterminantProps = {
-  matrix: number[][];
-};
-
-export type InverseProps = {
-  matrix: number[][];
-};
-
-export type EigenvaluesProps = {
-  matrix: number[][];
-};
-
-export type EigenvectorsProps = {
-  matrix: number[][];
-};
-
-export type TraceProps = {
-  matrix: number[][];
-};
-
-export type RankProps = {
-  matrix: number[][];
-};
-
-export type NullityProps = {
-  matrix: number[][];
-};
-
-export type IsSymmetricProps = {
-  matrix: number[][];
-};
-
-export type IsSkewSymmetricProps = {
-  matrix: number[][];
-};
+export type TransposeProps = MatrixProps;
+export type DeterminantProps = MatrixProps;
+export type InverseProps = MatrixProps;
+export type EigenvaluesProps = MatrixProps;
+export type EigenvectorsProps = MatrixProps;
+export type TraceProps = MatrixProps;
+export type RankProps = MatrixProps;
+export type NullityProps = MatrixProps;
+export type IsSymmetricProps = MatrixProps;
+export type IsSkewSymmetricProps = MatrixProps;
