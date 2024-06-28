@@ -1,4 +1,4 @@
-import * as numTypes from "../types/logarithms.types";
+import * as numTypes from "../../types/logarithms.types";
 
 export function log({ x, base }: numTypes.LogProps): number {
   return Math.log(x) / Math.log(base);

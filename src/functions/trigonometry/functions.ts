@@ -1,4 +1,4 @@
-import * as numTypes from "../types/trigonometry.types";
+import * as numTypes from "../../types/trigonometry.types";
 
 const PI = Math.PI;
 

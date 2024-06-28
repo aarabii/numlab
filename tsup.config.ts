@@ -1,17 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: [
-    "src/index.ts",
-    "src/arithmetic/index.ts",
-    "src/advancedMath/index.ts",
-    "src/linearAlgebra/index.ts",
-    "src/logarithms/index.ts",
-    "src/numberClassification/index.ts",
-    "src/random/index.ts",
-    "src/statistics/index.ts",
-    "src/trigonometry/index.ts",
-  ],
+  entry: ["src/index.ts", "src/functions/index.ts"],
   format: ["esm", "cjs"],
   target: "es2022",
   sourcemap: true,

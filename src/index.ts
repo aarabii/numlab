@@ -1,11 +1,11 @@
-export * as advancedMath from "./advancedMath";
-export * as arithmetic from "./arithmetic";
-export * as linearAlgebra from "./linearAlgebra";
-export * as logarithms from "./logarithms";
-export * as numberClassifications from "./numberClassification";
-export * as random from "./random";
-export * as statistics from "./statistics";
-export * as trigonometry from "./trigonometry";
+export * as advancedMath from "./functions/advancedMath";
+export * as arithmetic from "./functions/arithmetic";
+export * as linearAlgebra from "./functions/linearAlgebra";
+export * as logarithms from "./functions/logarithms";
+export * as numberClassifications from "./functions/numberClassification";
+export * as random from "./functions/random";
+export * as statistics from "./functions/statistics";
+export * as trigonometry from "./functions/trigonometry";
 
 // types
 export * as advanceMathTypes from "./types/advancedMath.types";

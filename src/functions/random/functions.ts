@@ -1,4 +1,4 @@
-import * as numTypes from "../types/random.types";
+import * as numTypes from "../../types/random.types";
 
 export function random({
   type = "Int",

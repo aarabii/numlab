@@ -1,4 +1,4 @@
-import * as numTypes from "../types/numberClassification.types";
+import * as numTypes from "../../types/numberClassification.types";
 
 export function isEven({ num }: numTypes.IsEvenProps): boolean {
   return num % 2 === 0;
